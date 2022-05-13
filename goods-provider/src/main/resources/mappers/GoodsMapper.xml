@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.goodsprovider.dao.GoodsDao">
+        <resultMap id="playerMap"    type="player">
+            <id column="playerId" property="playerId"/>
+            <result column="name" property="name"/>
+            <result column="sex" property="sex"/>
+            <result column="age" property="age"/>
+            <result column="address" property="address"/>
+        </resultMap>
+    <select id="getPlayerList" resultMap="playerMap">
+        select * from player
+    </select>
+    <select id="getPlayerDetail" resultMap="playerMap">
+        select * from player where playerId = #{playerId}
+    </select>
+    <insert id="addPlayer">
+        insert into player(name,sex,age,address) values (#{name},#{sex},#{age},#{address})
+    </insert>
+    <delete id="delete">
+        delete from player where playerId = #{playerId}
+    </delete>
+</mapper>
